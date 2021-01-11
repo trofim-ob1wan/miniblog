@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}cnfnmz{% endblock %}
+
+{% block body %}
+    <div class="row mt-5 mb-5">
+        <div class="col">
+            <div class="posts-panel-header d-flex align-items-center justify-content-between">
+                <h3 class="mb-0">MiniBlog</h3>
+                <div class="posts-panel-button">
+                    <a class="btn btn-info" href="{{ path('home') }}">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="card mb-3">
+            <div class="card-header">{{ post.title }}</div>
+            <img class="card-img-top" src="/img/{{ post.img }}" alt="" height="65%">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.name }}</h5>
+                <p class="card-text">{{ post.description }}</p><hr>
+                <p class="card-text">{{ post.date|date("F jS \\a\\t g:ia") }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

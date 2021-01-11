@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MiniBlog{% endblock %}
+
+{% block body %}
+    <div class="row mt-5 mb-5">
+        <div class="col">
+            <div class="posts-panel-header d-flex align-items-center justify-content-between">
+                <h3 class="mb-0">MiniBlog</h3>
+                <div class="posts-panel-button">
+                    <a class="btn btn-info" href="{{ path('create_post') }}">Add new post</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="card-deck">
+            {% for single in posts %}
+                <div class="card border-success mb-3" style="max-width: 25rem;">
+                    <img class="card-img-top" src="img/{{ single.img }}" alt="" width="200" height="200">
+                    <div class="card-body text-success">
+                        <a href="{{ path('show', {id: single.id}) }}"><h5 class="card-title">{{ single.title }}</h5></a>
+                        <p class="card-text">{{ single.name }}</p><hr>
+                        {% set textParagraph = single.description|striptags %}
+                        {{ textParagraph|length > 200 ? textParagraph|slice(0, 200) ~ '...' : textParagraph }}
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{{ single.date|date("F jS \\a\\t g:ia") }}</small><br>
+                        <a href="{{ path('update', {id: single.id}) }}">Edit</a><br>
+                        <a href="{{ path('delete', {id: single.id}) }}">Remove</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

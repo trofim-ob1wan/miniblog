@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}update post{% endblock %}
+
+{% block body %}
+<div class="row mt-5">
+    <div class="col">
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_end(form) }}
+    </div>
+</div>
+
+{% endblock %}
+
